@@ -14,8 +14,8 @@ The following **required** functionality is completed:
 - [ ] **Data uses the useEffect React hook and async/await syntax**
 - [ ] **The app dashboard includes at least three summary statistics about the data such as**
   - [ ] *Total Number of Breweries*
-  - [ ] *Number of Cities Represented*
-  - [ ] *Number of Countries Represented*
+  - [ ] *Number of Breweries in the United States*
+  - [ ] *Number of Breweries in Georgia*
 - [ ] **A search bar allows the user to search for an item in the fetched data**
 - [ ] **Multiple different filters (2+) allow the user to filter items in the database by specified categories**
 
