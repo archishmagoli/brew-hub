@@ -18,6 +18,11 @@
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
+.brewery_dropdown {
+  color: #1a1a1a;
+  background-color: rgba(255, 255, 255, 0.87);
+}
+
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);
