@@ -6,10 +6,14 @@ import './App.css'
 const List = () => {
     const URL = 'https://api.openbrewerydb.org/v1/breweries';
     const [breweries, setBreweries] = useState([]);
-    const [typeFilter, setTypeFilter] = useState(null);
-    const [search, setSearch] = useState(null);
 
-    const brewery_types = [
+    const [searchTerms, setSearchTerms] = useState({
+        breweryType: null,
+        nameSearch: null,
+        citySearch: null
+    })
+
+    const breweryTypes = [
         {value: 'large', label: 'large'},
         {value: 'micro', label: 'micro'},
         {value: 'nano', label: 'nano'},
@@ -22,35 +26,61 @@ const List = () => {
         {value: 'closed', label: 'closed'}
     ]
 
-    useEffect(() => {
-        const fetchData = async () => {
-            let response;
-            let MOD_URL = URL;
-
-            if (typeFilter !== null) {
-                MOD_URL = MOD_URL + '?by_type=' + typeFilter;
-            }
-            
-            if (search !== null) {
-                
-                MOD_URL = MOD_URL + (typeFilter === null ? '?' : '&') + 'by_name=' + encodeURIComponent(search);
-            }
-
-            response = await axios.get(MOD_URL);
-
-            console.log(MOD_URL);
-
-            setBreweries(response.data);
-        }
+    const handleSearch = (event) => {
+        event.preventDefault();
         fetchData();
-    }, [typeFilter, search]);
+    }
+
+    const fetchData = async () => {
+        let response;
+        let MOD_URL = URL;
+
+        if (searchTerms.breweryType !== null) {
+            MOD_URL = MOD_URL + '?by_type=' + searchTerms.breweryType;
+        }
+        
+        if (searchTerms.nameSearch !== null) {
+            MOD_URL = MOD_URL + (searchTerms.breweryType === null ? '?' : '&') 
+                + 'by_name=' + encodeURIComponent(searchTerms.nameSearch);
+        }
+
+        if (searchTerms.citySearch !== null) {
+            MOD_URL = MOD_URL + (searchTerms.breweryType === null && searchTerms.nameSearch === null 
+                ? '?' : '&') + 'by_city=' + encodeURIComponent(searchTerms.citySearch);
+        }
+
+        response = await axios.get(MOD_URL);
+        setBreweries(response.data);
+    }
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+
+    const handleTerms = (event) => {
+        const {name, value} = event.target;
+        setSearchTerms({ ...searchTerms, [name]: value});
+    }
 
     return (
         <>
-        <label htmlFor='nameSearch'>Search By Name</label>
-        <input id='nameSearch' name="nameSearch" type="text" onChange={e => setSearch(e.target.value)} />
+        <form onSubmit={handleSearch} className='searchForm'>
+            <label htmlFor='nameSearch'>Search By Name:</label>
+            <input id='nameSearch' name="nameSearch" type="text" onChange={handleTerms}/>
+            <p>|</p>
+            <label htmlFor='citySearch'>Search By City:</label>
+            <input id='citySearch' name="citySearch" type="text" onChange={handleTerms}/>
+            <p>|</p>
+            <div style={{'display' : 'flex', 'alignItems' : 'center', 'justifyContent' : 'center', 'width' : '15em', 'gap' : '0.5em'}}>
+                <label htmlFor='breweryDropdown'>Search By Type: </label>
+                <Select id='breweryDropdown' options={breweryTypes} className='breweryDropdown' onChange={(type) =>
+                    setSearchTerms({ ...searchTerms, breweryType: type[0].value})
+                }/>
+            </div>
 
-        <Select options={brewery_types} className='brewery_dropdown' onChange={(type) => setTypeFilter(type[0].value)} />
+            <button type="submit">Search</button>
+        </form>
+
         <table>
             <thead>
                 <tr>
@@ -68,7 +98,8 @@ const List = () => {
                         <tr key={brewery.id}>
                             <td>{brewery.name}</td>
                             <td>{brewery.brewery_type}</td>
-                            <td>{brewery.address_1}, {brewery.city}, {brewery.state_province}</td>
+                            <td>{brewery.address_1 !== null ? brewery.address_1 + ', ' : null} 
+                                {brewery.city}, {brewery.state_province}</td>
                             <td>{brewery.country}</td>
                             <td>{brewery.website_url ? brewery.website_url : 'None'}</td>
                         </tr>
@@ -76,7 +107,6 @@ const List = () => {
                     ) : null
                 }
             </tbody>
-            
         </table>
         </>
     )
