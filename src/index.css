@@ -5,12 +5,24 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-image: url('./assets/background.jpg');
+  background-color: rgba(0, 0, 0, 0.5); /* Black color with 50% opacity */
+  background-blend-mode: multiply; /* Blend the background image with the color */
+  background-size: 100%; /* Stretch the image to cover the entire container */
+  background-attachment: fixed; /* Fixed background */
+  background-repeat: no-repeat; /* Do not repeat the image */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.content {
+  background-color: rgba(0, 0, 0, 0.8); /* Black color with 50% opacity */
+  border-radius: 2em;
+  padding: 1em;
+  border: 1px solid rgba(255, 255, 255, 0.87)
 }
 
 a {

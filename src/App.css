@@ -9,7 +9,6 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5em;
-  padding-bottom: 1em;
 }
 
 .breweryDropdown {
@@ -17,25 +16,43 @@
   background-color: rgba(255, 255, 255, 0.87);
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
 .card {
+  border-radius: 1em;
+  background-color: rgba(139, 69, 19, 0.7);
   padding: 2em;
+  border: 1px solid rgba(255, 255, 255, 0.87);
+  width: 15em;
 }
 
-.read-the-docs {
-  color: #888;
+.searchBar {
+  border-radius: 1em;
+  margin: 1em;
+  background-color: rgba(219, 144, 5, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.87);
+  align-items: center;
+}
+
+.cardHolder {
+  display: flex;
+  gap: 2em;
+  align-items: center;
+  justify-content: center;
+}
+
+.brewTable {
+  width: 100%;
+  border-radius: 2em;
+  border: 1px solid rgba(255, 255, 255, 0.87);
+  padding: 0.5em;
+  background-color: rgba(38, 38, 38, 0.8);
+}
+
+#flag {
+  width: 25%;
+  height: 30%;
+}
+
+.georgia {
+  width: 15%;
+  height: 5%;
 }

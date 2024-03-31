@@ -64,24 +64,27 @@ const List = () => {
 
     return (
         <>
-        <form onSubmit={handleSearch} className='searchForm'>
-            <label htmlFor='nameSearch'>Search By Name:</label>
-            <input id='nameSearch' name="nameSearch" type="text" onChange={handleTerms}/>
-            <p>|</p>
-            <label htmlFor='citySearch'>Search By City:</label>
-            <input id='citySearch' name="citySearch" type="text" onChange={handleTerms}/>
-            <p>|</p>
-            <div style={{'display' : 'flex', 'alignItems' : 'center', 'justifyContent' : 'center', 'width' : '15em', 'gap' : '0.5em'}}>
-                <label htmlFor='breweryDropdown'>Search By Type: </label>
-                <Select id='breweryDropdown' options={breweryTypes} className='breweryDropdown' onChange={(type) =>
-                    setSearchTerms({ ...searchTerms, breweryType: type[0].value})
-                }/>
-            </div>
+        <div className='searchBar'>
+            <form onSubmit={handleSearch} className='searchForm'>
+                <label htmlFor='nameSearch'>Search By Name:</label>
+                <input id='nameSearch' name="nameSearch" type="text" onChange={handleTerms}/>
+                <p>|</p>
+                <label htmlFor='citySearch'>Search By City:</label>
+                <input id='citySearch' name='citySearch' type="text" onChange={handleTerms}/>
+                <p>|</p>
+                <div style={{'display' : 'flex', 'alignItems' : 'center', 'justifyContent' : 'center', 'width' : '15em', 'gap' : '0.5em'}}>
+                    <p>Search By Type: </p>
+                    <Select id='breweryDropdown' options={breweryTypes} className='breweryDropdown' onChange={(type) =>
+                        setSearchTerms({ ...searchTerms, breweryType: type[0].value})
+                    }/>
+                </div>
 
-            <button type="submit">Search</button>
-        </form>
+                <button type="submit">Search</button>
+            </form>
+        </div>
+        
 
-        <table>
+        <table className='brewTable'>
             <thead>
                 <tr>
                     <th>Name</th>
