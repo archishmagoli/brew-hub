@@ -104,7 +104,7 @@ const List = () => {
                             <td>{brewery.address_1 !== null ? brewery.address_1 + ', ' : null} 
                                 {brewery.city}, {brewery.state_province}</td>
                             <td>{brewery.country}</td>
-                            <td>{brewery.website_url ? brewery.website_url : 'None'}</td>
+                            <td>{brewery.website_url ? <a href={brewery.website_url} target='_blank'>{brewery.website_url}</a> : 'None'}</td>
                         </tr>
                     
                     ) : null
