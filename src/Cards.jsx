@@ -34,8 +34,6 @@ const Cards = () => {
                 numberUS: totalNumUS,
                 numberGeorgia: totalNumGeorgia
             });
-
-            console.log(metadata);
         }
 
         fetchMetadata();
@@ -51,13 +49,13 @@ const Cards = () => {
 
             <div className='card'>
                 <h2>Total American Breweries</h2>
-                <img src='src\assets\usa.avif' id='flag'></img>
+                <h2>🍺</h2>
                 <p>{metadata.numberUS}</p>
             </div>
 
             <div className='card'>
                 <h2>Total Breweries in Georgia</h2>
-                <img src='src\assets\georgia.png' className='georgia'></img>
+                <h2>🍾</h2>
                 <p>{metadata.numberGeorgia}</p>
             </div>
         </div>
