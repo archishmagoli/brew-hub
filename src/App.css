@@ -55,8 +55,16 @@ nav {
 
 .home-link {
   border: 1px solid white;
-  background:rgba(38, 38, 38);
+  background:#8C5E29;
   width: 4em;
   padding: 0.25em;
+  margin: 0.5em;
+  border-radius: 0.5em;
+}
+
+.graph {
+  border: 1px solid white;
+  border-radius: 1em;
+  background:rgba(38, 38, 38, 0.8);
   margin: 1em;
 }

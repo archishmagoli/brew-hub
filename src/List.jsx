@@ -3,10 +3,12 @@ import { useState, useEffect } from 'react';
 import Select from 'react-dropdown-select';
 import './App.css'
 import { Link } from "react-router-dom";
+import {BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from "recharts";
 
 const List = () => {
     const URL = 'https://api.openbrewerydb.org/v1/breweries';
     const [breweries, setBreweries] = useState([]);
+    const [types, setTypes] = useState([]);
 
     const [searchTerms, setSearchTerms] = useState({
         breweryType: null,
@@ -52,6 +54,20 @@ const List = () => {
 
         response = await axios.get(MOD_URL);
         setBreweries(response.data);
+
+        let breweryTypes = {};
+        response.data.forEach(brewery => {
+            if (brewery.brewery_type in breweryTypes) {
+                breweryTypes[brewery.brewery_type] += 1;
+            } else {
+                breweryTypes[brewery.brewery_type] = 1;
+            }
+        });
+        let finalTypes = [];
+        for (let type in breweryTypes) {
+            finalTypes.push({name: type, breweryCount: breweryTypes[type]})
+        }
+        setTypes(finalTypes);
     }
 
     useEffect(() => {
@@ -65,6 +81,25 @@ const List = () => {
 
     return (
         <>
+        <div className='graph'>
+            <h2>Types of Breweries!</h2>
+            <BarChart width={1000} height={300} data={types}
+                    margin={{
+                        top: 10,
+                        right: 30,
+                        left: 20,
+                        bottom: 5
+                    }}
+                    style={{'color': 'white'}}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="name" tick={{ fill: 'white' }}/>
+                <YAxis tick={{ fill: 'white' }}/>
+                <Tooltip />
+                <Legend />
+                <Bar dataKey="breweryCount" fill="#A52A2A" />
+            </BarChart>
+        </div>
+
         <div className='searchBar'>
             <form onSubmit={handleSearch} className='searchForm'>
                 <label htmlFor='nameSearch'>Search By Name:</label>
