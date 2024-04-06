@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import Select from 'react-dropdown-select';
 import './App.css'
+import { Link } from "react-router-dom";
 
 const List = () => {
     const URL = 'https://api.openbrewerydb.org/v1/breweries';
@@ -91,7 +92,7 @@ const List = () => {
                     <th>Type</th>
                     <th>Address</th>
                     <th>Country</th>
-                    <th>Website URL</th>
+                    <th>Details</th>
                 </tr>
             </thead>
             <tbody>
@@ -104,7 +105,13 @@ const List = () => {
                             <td>{brewery.address_1 !== null ? brewery.address_1 + ', ' : null} 
                                 {brewery.city}, {brewery.state_province}</td>
                             <td>{brewery.country}</td>
-                            <td>{brewery.website_url ? <a href={brewery.website_url} target='_blank'>{brewery.website_url}</a> : 'None'}</td>
+                            <td>
+                                <Link
+                                    style={{ color: "White" }}
+                                    to={`/brew-hub/brewDetails/${brewery.id}`}
+                                    key={brewery.id}
+                                >🔗</Link>
+                            </td>
                         </tr>
                     
                     ) : null

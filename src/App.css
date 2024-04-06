@@ -46,3 +46,17 @@
   padding: 0.5em;
   background-color: rgba(38, 38, 38, 0.8);
 }
+
+nav {
+  position: fixed; 
+  top: 0; 
+  right: 0; 
+}
+
+.home-link {
+  border: 1px solid white;
+  background:rgba(38, 38, 38);
+  width: 4em;
+  padding: 0.25em;
+  margin: 1em;
+}

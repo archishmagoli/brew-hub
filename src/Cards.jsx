@@ -23,8 +23,6 @@ const Cards = () => {
             response = await axios.get(MOD_URL);
             let totalNumUS = response.data.total;
 
-            console.log(totalNumUS);
-
             MOD_URL = URL + '?by_state=georgia'
             response = await axios.get(MOD_URL);
             let totalNumGeorgia = response.data.total;
