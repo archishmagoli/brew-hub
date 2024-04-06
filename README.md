@@ -1,38 +1,33 @@
-# Web Development Project 5 - *Brew Hub 🍻*
+# Web Development Project 6 - *Brew Hub: More Brewing*
 
 Submitted by: **Archie Goli**
 
-This web app: **allows users to view and search through a list of all the breweries around the world!**
+This web app: **An extended take on the Unit 5 Brew Hub project!**
 
-Time spent: **8** hours spent in total
+Time spent: **3** hours spent in total
 
 ## Required Features
 
 The following **required** functionality is completed:
 
-- [x] **The list displays a list of data fetched using an API call**
-- [x] **Data uses the useEffect React hook and async/await syntax**
-- [x] **The app dashboard includes at least three summary statistics about the data such as**
-  - [x] *Total Number of Breweries*
-  - [x] *Number of Breweries in the United States*
-  - [x] *Number of Breweries in Georgia*
-- [x] **A search bar allows the user to search for an item in the fetched data**
-- [x] **Multiple different filters (2+) allow the user to filter items in the database by specified categories**
+- [x] **The app includes at least one unique chart developed using the fetched data that tell an interesting story**
+- [x] **Clicking on an item in the list view displays more details about it**
+- [x] **Clicking on an item has a direct, unique link to that item's detail view page**
+
 
 The following **optional** features are implemented:
 
-- [x] Multiple filters can be applied simultaneously
-- [x] Filters use different input types such as a text input, a selection, or a slider
-- [ ] The user can enter specific bounds for filter values
+- [ ] The site's customized dashboard contains more content that explains what is interesting about the data
+- [ ] The site allows users to toggle between different data visualizations
 
 The following **additional** features are implemented:
 
-* None
+* [x] Uniform styling and theme applied throughout the website!
 
 ## Video Walkthrough
 
-<a href='https://drive.google.com/file/d/1hoXAhzy7x0oqXRMYK7FKkTtT52GCc7eG/view?usp=sharing'>Here's a walkthrough</a> of implemented user stories.
+<a href=''>Here's a walkthrough</a> of implemented user stories.
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+I learned a lot about React Routing through this project!
