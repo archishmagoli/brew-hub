@@ -26,7 +26,7 @@ The following **additional** features are implemented:
 
 ## Video Walkthrough
 
-<a href=''>Here's a walkthrough</a> of implemented user stories.
+<a href='https://drive.google.com/file/d/1JdvO7Yvi-LCSAqZfZ6JJS4wU0KE5xoe1/view?usp=sharing'>Here's a walkthrough</a> of implemented user stories.
 
 ## Notes
 
